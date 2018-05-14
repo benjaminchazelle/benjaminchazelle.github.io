@@ -21,7 +21,7 @@ Just for starters, it's rich in Roman history but there's actually a whole lot m
 
 The Eiffel Tower? The Louvre? The River Seine? Sure, Paris is a beautiful city, but it's a cliché. Our objective is to leave you with some stunning examples of what's on offer in Lyon and to help you organize your trip to come and visit Lyon. You will be guided for your choice of accommodation and transportation depending on what you want to see.
 
-Our initial dataset can be downloaded here: https://data.grandlyon.com/culture/point-dintfrft-touristique-mftropole-de-lyon/. It is made of many different data that can interest tourists in Lyon: accommodations, cultural places or monuments, shops, restaurants etc. We chose this one because it is rich and the most important thing is that it has grographic data, so that we can create a map. It will be explained in the following sections but this dataset is not the only one we used, even though it is the foundation of our project.
+Our initial dataset can be downloaded here: https://data.grandlyon.com/culture/point-dintfrft-touristique-mftropole-de-lyon/. It is made of many different data that can interest tourists in Lyon: accommodations, cultural places or monuments, shops, restaurants etc. We chose this one because it is rich and the most important thing is that it has geographic data, so that we can create a map. It will be explained in the following sections but this dataset is not the only one we used, even though it is the foundation of our project.
 
 Here is the video of the first part of our project which explains the central idea that we have investigated in our final project: https://www.youtube.com/watch?v=MhXFzofHI5M
 
