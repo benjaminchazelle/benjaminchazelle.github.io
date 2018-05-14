@@ -7,4 +7,4 @@ Emilie Trouillard
 Emma Demarecaux
 
 ## Demo
-[https://benjaminchazelle.github.io/dtu-02806/tellmelyon/](https://benjaminchazelle.github.io/dtu-02806/tellmelyon/)
+[https://benjaminchazelle.github.io/](https://benjaminchazelle.github.io/)

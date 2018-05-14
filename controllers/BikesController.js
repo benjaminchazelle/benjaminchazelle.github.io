@@ -441,7 +441,7 @@ $rootScope.bikeStoryHomes = function () {
 $rootScope.bikeStoryOffices = function () {
 	$rootScope.bikeVariantOnly = true;
 	$rootScope.bikeMode = 'bikes';
-	$rootScope.bikeTime = 21;
+	$rootScope.bikeTime = 15;
 };
 
 
