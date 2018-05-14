@@ -6,7 +6,7 @@ Benjamin Chazelle
 Emilie Trouillard
 Emma Demarecaux
 
-## Demo
+## 0. Introduction
 
 Link to the vizualisation : https://benjaminchazelle.github.io/
 
