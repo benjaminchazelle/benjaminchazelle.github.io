@@ -1,0 +1,235 @@
+<html>
+<head>
+    <title>Soutenance PFE</title>
+
+    <script src="media.js"></script>
+
+
+    <style>
+
+        body {
+            margin: 0;
+            display: flex;
+            height: 100%;
+
+        }
+
+
+        main {
+            flex:1;
+            display: flex;
+            background: black;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        main img {
+            max-width: 100%;
+            max-height: 100%;
+            height: inherit !important;
+        }
+
+
+        #aside {
+            width: 400px;
+            background: #eceff1;
+            font-family: sans-serif;
+            color: #263238;
+            padding: 10px;
+        }
+
+        video {
+            margin-top: 10%;
+            width: 100%;
+            height: 80%;
+            background: white;
+            pointer-events: none;
+        }
+
+        #overlay {
+            position: absolute;
+            display: none;
+        }
+
+        #loader {
+            display: none;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<main>
+
+
+    <img id="slide"/>
+
+    <div id="overlay">
+        <video src="file:///home/bchazelle/latex/rapport1/media_soutenance/centrocourse.mp4"></video>
+    </div>
+
+
+</main>
+
+
+<div id="aside">
+    <img id="loader" src=""/>
+
+    <b>Soutenance PFE - Version 1</b> <br />
+    <hr />
+    <i>Flêches / Molette pour passer les slides</i>
+
+</div>
+
+
+
+<script>
+
+    function loadImage(src, callback) {
+        var img = document.querySelector("#loader");
+        img.onload = callback;
+        img.src = src;
+    }
+
+    let slide = document.querySelector('#slide');
+    let overlay = document.querySelector('#overlay');
+    let video = document.querySelector('#overlay video');
+
+    function resize() {
+        overlay.style.width = slide.getBoundingClientRect().width + "px";
+        overlay.style.height = slide.getBoundingClientRect().height + "px";
+    }
+
+    window.onresize = resize;
+
+    let currentSlide = 1;
+
+    function refreshView() {
+        resize();
+
+        let slideId = currentSlide.toString().padStart(2, '0');
+
+        loadImage("data/page-"+slideId+".png", function () {
+            slide.src = "data/page-"+slideId+".png";
+        });
+
+        if(currentSlide in medias) {
+
+            overlay.style.display = "block";
+            video.src = medias[currentSlide];
+
+        } else {
+            overlay.style.display = "none";
+        }
+
+    }
+
+    window.onload = function () {
+        refreshView();
+    };
+
+    function run() {
+
+        refreshView();
+        video.muted = true;
+        video.play();
+    }
+
+    function next() {
+        currentSlide = Math.min(currentSlide+1, 31);
+        run();
+    }
+
+    function previous() {
+        currentSlide = Math.max(currentSlide-1, 1);
+        run();
+    }
+
+    function resetPlay() {
+        video.currentTime = 0;
+        video.play();
+    }
+
+    function togglePlay() {
+        if(video.ended) {
+            resetPlay();
+        }
+        else if(video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    function isPointerMode() {
+        return document.body.style.cursor === "";
+    }
+
+    function togglePointer() {
+        document.body.style.cursor = isPointerMode()  ? "none": "";
+    }
+
+    function resetPresentation() {
+        currentSlide = 1;
+        run();
+    }
+
+    window.onkeyup = function(e) {
+        if(e.key === "ArrowDown" || e.key === "ArrowRight") {
+            next();
+        }
+        else if(e.key === "ArrowUp" || e.key === "ArrowLeft") {
+            previous();
+        }
+        else if(e.key === "Backspace") {
+            resetPresentation();
+        }
+        else if(e.key === "h" || e.key === "H") {
+            togglePointer();
+        }
+        else if(e.key === "f" || e.key === "F") {
+            document.body.requestFullscreen();
+        }
+        else if(e.key === " ") {
+            togglePlay();
+        }
+
+    };
+
+    window.onclick = function(e) {
+        if(e.which === 1) {
+            togglePlay();
+        } else if(e.which === 2) {
+            togglePointer();
+        }
+    };
+
+
+    switchAble = true;
+
+    window.onwheel = function(e) {
+
+        if(!isPointerMode() && !switchAble) {
+            return;
+        }
+
+        switchAble = false;
+
+        if(e.deltaY < 0) {
+            previous();
+        } else if(e.deltaY > 0) {
+            next();
+        }
+
+        setTimeout(function() {
+            switchAble = true
+        }, 500)
+    };
+
+</script>
+
+</body>
+</html>
